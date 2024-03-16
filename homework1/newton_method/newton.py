@@ -16,7 +16,7 @@ def newton_method(x, eps, f, derivative_f, second_derivative_f, out_file=None):
             break
 
         x_next = x - derivative_f(x) / second_derivative_f(x)
-        output += f"Номер итерации: {iter_n} | x = {x} | f'(x) = {derivative_f(x)} | f''(x) = {second_derivative_f(x)} | x_next = {x_next} \n"
+        output += f"Номер итерации: {iter_n} | x = {x} | f(x) = {f(x)} | f'(x) = {derivative_f(x)} | f''(x) = {second_derivative_f(x)} | x_next = {x_next} \n"
 
         x = x_next
         iter_n += 1
