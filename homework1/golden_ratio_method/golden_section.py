@@ -9,7 +9,7 @@ def golden_section_search(a, b, eps, f, out_file=None):
     c = b - (b - a) / phi
     d = a + (b - a) / phi
 
-    while np.abs(b - a) >= 2 * eps:
+    while (b - a) >= 2 * eps:
         if iter_n > 25:
             output += "Лимит итераций превышен \n"
             break
@@ -29,7 +29,7 @@ def golden_section_search(a, b, eps, f, out_file=None):
     if out_file is not None:
         min_value = min(f(c), f(d))
         min_x = c if f(c) < f(d) else d
-        output += f"Ответ найден | Минимум функции {min_value} при x = {min_x} \n"
+        output += f"Ответ найден | Экстремум функции {min_value} при x = {min_x} \n"
         with open(out_file, "w") as file:
             file.write(output)
     else:

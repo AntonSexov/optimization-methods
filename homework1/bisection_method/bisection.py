@@ -25,7 +25,7 @@ def bisection_method(a, b, eps, f, der_f , out_file = None):
             a = mid
     
     if(out_file != None):
-        output += f"Ответ найден | Минимум функции {f(mid)} при x = {mid} \n"
+        output += f"Ответ найден | Экстремум функции {f(mid)} при x = {mid} \n"
         with open(out_file, "w") as file:
             file.write(output)
     else:
