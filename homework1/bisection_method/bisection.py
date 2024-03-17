@@ -19,7 +19,7 @@ def bisection_method(a, b, eps, f, der_f , out_file = None):
         if(der_f(mid) == 0.0):
             break
 
-        if(der_f(mid) * f(a) < 0):
+        if(der_f(mid) > 0):
             b = mid
         else:
             a = mid
@@ -34,8 +34,10 @@ def bisection_method(a, b, eps, f, der_f , out_file = None):
 
 
 if __name__ == "__main__":
+
     f = lambda x: np.log(1 + x**2) - np.sin(x)
     derivative_f = lambda x: (2*x)/(x**2 + 1) - np.cos(x)
-    bisection_method(0, np.pi/4, 10**-10, f,derivative_f, "bisection_output.log")
+    
+    bisection_method(0, np.pi/4, 10**-10, f, derivative_f, "bisection_output.log")
 
 
