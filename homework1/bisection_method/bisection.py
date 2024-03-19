@@ -15,7 +15,7 @@ def bisection_method(a, b, eps, f, out_file = None):
         x1 = (a+b - eps)/2
         x2 = (a+b + eps)/2
         
-        output += f"Номер итерации: {iter_n} | x1 = {x1}| x2 = {x2} |  f(x) = {f(mid)} \n"
+        output += f"Номер итерации: {iter_n} | x1 = {x1}| x2 = {x2} |  f(x) = {f((b+a)/2)} \n"
         iter_n += 1
 
         if(np.abs(b - a)/2 < eps):
