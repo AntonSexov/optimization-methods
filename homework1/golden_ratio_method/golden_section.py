@@ -23,13 +23,13 @@ def golden_section_search(a, b, eps, f, out_file=None):
             c = d
             d = a + (b - a) / phi
 
-        output += f"Номер итерации: {iter_n} | a = {a} | b = {b} | c = {c} | d = {d} | f(c) = {f(c)} | f(d) = {f(d)} \n"
+        output += f"n: {iter_n} | a = {a :.3f} | b = {b :.3f} |\n"
         iter_n += 1
 
     if out_file is not None:
         min_value = min(f(c), f(d))
         min_x = c if f(c) < f(d) else d
-        output += f"Ответ найден | Экстремум функции {min_value} при x = {min_x} \n"
+        output += f"Ответ найден | Экстремум функции {min_value :.10f} при x = {min_x :.10f} \n"
         with open(out_file, "w") as file:
             file.write(output)
     else:

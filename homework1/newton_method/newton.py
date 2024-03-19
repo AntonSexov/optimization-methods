@@ -12,11 +12,11 @@ def newton_method(x, eps, f, derivative_f, second_derivative_f, out_file=None):
             break
         
         if abs(derivative_f(x)) < eps:
-            output += f"Ответ найден | Экстремум функции {f(x)} при x = {x} \n"
+            output += f"Ответ найден | Экстремум функции {f(x):.6f} при x = {x:.6f} \n"
             break
 
         x_next = x - derivative_f(x) / second_derivative_f(x)
-        output += f"Номер итерации: {iter_n} | x = {x} | f(x) = {f(x)} | f'(x) = {derivative_f(x)} | f''(x) = {second_derivative_f(x)} | x_next = {x_next} \n"
+        output += f"n: {iter_n} | x = {x:.3f} | f(x) = {f(x):.3f} | f'(x) = {derivative_f(x):.3f} | f''(x) = {second_derivative_f(x):.3f} | x_next = {x_next:.3f} \n"
 
         x = x_next
         iter_n += 1
