@@ -1,7 +1,7 @@
 import math
 import numpy as np
 
-def bisection_method(a, b, eps, f, der_f , out_file = None):
+def bisection_method(a, b, eps, f, out_file = None):
 
     output = ""
     iter_n = 1;
@@ -12,20 +12,22 @@ def bisection_method(a, b, eps, f, der_f , out_file = None):
             output += "Лимит итераций превышен \n"
             break
 
-        mid = (a+b)/2
-        output += f"Номер итерации: {iter_n} | x = {mid} |  f(x) = {f(mid)} | f\'(x) = {der_f(mid)} \n"
+        x1 = (a+b - eps)/2
+        x2 = (a+b + eps)/2
+        
+        output += f"Номер итерации: {iter_n} | x1 = {x1}| x2 = {x2} |  f(x) = {f(mid)} \n"
         iter_n += 1
 
-        if(der_f(mid) == 0.0):
+        if(np.abs(b - a)/2 < eps):
             break
 
-        if(der_f(mid) > 0):
-            b = mid
+        if(f(x1) <= f(x2)):
+            b = x2
         else:
-            a = mid
+            a = x1
     
     if(out_file != None):
-        output += f"Ответ найден | Экстремум функции {f(mid)} при x = {mid} \n"
+        output += f"Ответ найден | Экстремум функции {f((b+a)/2)} при x = {(b+a)/2} \n"
         with open(out_file, "w") as file:
             file.write(output)
     else:
@@ -38,6 +40,6 @@ if __name__ == "__main__":
     f = lambda x: np.log(1 + x**2) - np.sin(x)
     derivative_f = lambda x: (2*x)/(x**2 + 1) - np.cos(x)
     
-    bisection_method(0, np.pi/4, 10**-10, f, derivative_f, "bisection_output.log")
+    bisection_method(0, np.pi/4, 10**-10, f, "bisection_output.log")
 
 
