@@ -15,7 +15,7 @@ def bisection_method(a, b, eps, f, out_file = None):
         x1 = (a+b - eps)/2
         x2 = (a+b + eps)/2
         
-        output += f"n: {iter_n} | a = {a :.3f}| b = {b :.3f} |  f(x) = {f((b+a)/2) :.3f} \n"
+        output += f"n: {iter_n} | a = {a :.3f}| b = {b :.3f} | \n"
         iter_n += 1
 
         if(np.abs(b - a)/2 < eps):
@@ -27,7 +27,7 @@ def bisection_method(a, b, eps, f, out_file = None):
             a = x1
     
     if(out_file != None):
-        output += f"Ответ найден | Экстремум функции {f((b+a)/2) :.10f} при x = {(b+a)/2  :.10f} \n"
+        output += f"Ответ найден | Экстремум функции {f((b+a)/2)} при x = {(b+a)/2 } \n"
         with open(out_file, "w") as file:
             file.write(output)
     else:
